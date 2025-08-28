@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Triad - 실시간 협업 도구",
+  "version": "1.0.0",
+  "description": "웹페이지에서 팀원들과 실시간으로 커서를 공유하고 위치별 댓글을 남길 수 있는 크롬 확장프로그램",
+  "permissions": ["activeTab", "storage", "sidePanel"],
+  "host_permissions": ["*://*/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Triad"
+  },
+  "side_panel": {
+    "default_path": "side-panel.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
