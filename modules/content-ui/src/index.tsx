@@ -12,7 +12,7 @@ chrome.runtime.onMessage.addListener((request, _sender, sendResponse) => {
     case CHROME_ACTION_TYPE.GET_STATUS:
       sendResponse({ active: isTriadActive });
       break;
-      
+
     case CHROME_ACTION_TYPE.TOGGLE_TRIAD:
       isTriadActive = !isTriadActive;
       const rootElement = document.getElementById("triad-content-ui-root");
@@ -21,7 +21,7 @@ chrome.runtime.onMessage.addListener((request, _sender, sendResponse) => {
       }
       sendResponse({ active: isTriadActive });
       break;
-      
+
     default:
       sendResponse({ error: "Unknown action" });
       break;

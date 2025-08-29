@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { CHROME_ACTION_TYPE } from "@triad/shared";
+import { Button } from "@triad/ui";
 
 const Popup: React.FC = () => {
   const [isTriadActive, setIsTriadActive] = useState(false);
@@ -51,7 +52,9 @@ const Popup: React.FC = () => {
     });
   };
 
-  const handleOpenSidePanel = () => {};
+  const handleOpenSidePanel = () => {
+    chrome.runtime.sendMessage({ action: "open-side-panel" });
+  };
 
   const handleToggleTheme = () => {
     const newTheme = isDarkMode ? "light" : "dark";
@@ -79,13 +82,9 @@ const Popup: React.FC = () => {
           <h1 className="text-lg font-semibold">Triad</h1>
         </div>
 
-        <button
-          onClick={handleToggleTheme}
-          className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-          title="테마 전환"
-        >
+        <Button variant="default" onClick={handleToggleTheme} title="테마 전환">
           {isDarkMode ? "🌞" : "🌙"}
-        </button>
+        </Button>
       </div>
 
       {/* 상태 표시 */}

@@ -9,5 +9,5 @@
     "noEmit": false,
     "declaration": true
   },
-  "include": ["index.mts", "lib", "tailwind.config.ts"]
+  "include": ["index.mts", "lib", "components", "tailwind.config.ts"]
 }

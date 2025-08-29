@@ -33,10 +33,12 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   }
 });
 
-chrome.runtime.onMessage.addListener((message, sender) => {
+chrome.runtime.onMessage.addListener((message) => {
   if (message.action === "open-side-panel") {
-    if (sender.tab?.windowId) {
-      chrome.sidePanel.open({ windowId: sender.tab.windowId });
-    }
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      if (tabs[0]?.windowId) {
+        chrome.sidePanel.open({ windowId: tabs[0].windowId });
+      }
+    });
   }
 });
