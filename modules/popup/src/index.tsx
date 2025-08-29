@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
 import Popup from "./Popup";
-import "./style.css";
+import "@triad/ui/global.css";
 
 const container = document.getElementById("root");
 const root = createRoot(container!);

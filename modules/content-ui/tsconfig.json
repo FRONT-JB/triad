@@ -1,28 +1,10 @@
 {
+  "extends": "@triad/typescript-config/base",
   "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "types": ["chrome"],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@triad/shared": ["../../packages/shared"],
-      "@triad/ui": ["../../packages/ui"]
-    }
-  },
-  "include": ["src", "build.mts", "types.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["dist", "node_modules"]
+      "@src/*": ["src/*"]
+    },
+    "types": ["chrome", "node"]
+  }
 }

@@ -44,7 +44,7 @@ const config: InlineConfig = {
 async function buildContentUI() {
   try {
     const cssArgs = {
-      "--input": resolve(srcDir, "style.css"),
+      "--input": resolve(srcDir, "index.css"),
       "--output": resolve(rootDir, "dist/index.css"),
       "--config": resolve(rootDir, "tailwind.config.ts"),
       ...(isDev && { "--watch": true }),
