@@ -1,5 +1,5 @@
-import baseConfig from '@triad/tailwindcss-config';
-import type { Config } from 'tailwindcss';
+import baseConfig from "@triad/tailwindcss-config";
+import type { Config } from "tailwindcss";
 
 export default {
   ...baseConfig,

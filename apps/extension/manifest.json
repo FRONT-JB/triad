@@ -15,17 +15,10 @@
   "content_scripts": [
     {
       "matches": ["*://*/*"],
-      "js": ["content-ui/index.iife.js"],
-      "css": ["content-ui/style.css"]
+      "js": ["content-ui/index.iife.js"]
     }
   ],
   "background": {
     "service_worker": "background.js"
-  },
-  "web_accessible_resources": [
-    {
-      "resources": ["content-ui/style.css"],
-      "matches": ["*://*/*"]
-    }
-  ]
+  }
 }
