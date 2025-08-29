@@ -6,19 +6,26 @@
   "permissions": ["activeTab", "storage", "sidePanel"],
   "host_permissions": ["*://*/*"],
   "action": {
-    "default_popup": "popup.html",
+    "default_popup": "popup/index.html",
     "default_title": "Triad"
   },
   "side_panel": {
-    "default_path": "side-panel.html"
+    "default_path": "side-panel/index.html"
   },
   "content_scripts": [
     {
       "matches": ["*://*/*"],
-      "js": ["content.js"]
+      "js": ["content-ui/index.iife.js"],
+      "css": ["content-ui/style.css"]
     }
   ],
   "background": {
     "service_worker": "background.js"
-  }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["content-ui/style.css"],
+      "matches": ["*://*/*"]
+    }
+  ]
 }

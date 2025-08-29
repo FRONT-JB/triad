@@ -8,21 +8,14 @@ export default defineConfig({
     outDir: resolve(__dirname, "../../dist"),
     rollupOptions: {
       input: {
-        popup: resolve(__dirname, "src/pages/popup/index.html"),
-        "side-panel": resolve(__dirname, "src/pages/side-panel/index.html"),
-        content: resolve(__dirname, "src/pages/content/index.ts"),
         background: resolve(__dirname, "src/background/index.ts"),
       },
       output: {
         entryFileNames: "[name].js",
         chunkFileNames: "[name].js",
-        assetFileNames: (assetInfo) => {
-          if (assetInfo.name?.endsWith(".html")) {
-            return "[name][extname]";
-          }
-          return "[name].[ext]";
-        },
+        assetFileNames: "[name].[ext]",
       },
     },
+    emptyOutDir: false, // 다른 모듈들이 빌드한 파일들을 보존
   },
 });

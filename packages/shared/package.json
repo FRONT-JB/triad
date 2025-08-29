@@ -1,0 +1,17 @@
+{
+  "name": "@triad/shared",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.3",
+    "@types/chrome": "^0.0.268",
+    "@types/node": "^20.0.0"
+  }
+}
