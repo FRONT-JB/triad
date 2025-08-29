@@ -1,0 +1,19 @@
+{
+  "name": "@triad/side-panel",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@triad/shared": "workspace:*",
+    "@triad/ui": "workspace:*"
+  },
+  "devDependencies": {
+    "@triad/tailwindcss-config": "workspace:*",
+    "@triad/typescript-config": "workspace:*"
+  }
+}

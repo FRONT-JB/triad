@@ -1,0 +1,13 @@
+{
+  "extends": "@triad/typescript-config/base",
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    },
+    "noEmit": false,
+    "declaration": true
+  },
+  "include": ["index.mts", "lib", "components", "tailwind.config.ts"]
+}

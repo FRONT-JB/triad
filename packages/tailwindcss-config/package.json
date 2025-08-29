@@ -1,0 +1,13 @@
+{
+  "name": "@triad/tailwindcss-config",
+  "version": "0.0.1",
+  "main": "tailwind.config.ts",
+  "private": true,
+  "sideEffects": false,
+  "dependencies": {
+    "@tailwindcss/forms": "^0.5.0"
+  },
+  "devDependencies": {
+    "@triad/typescript-config": "workspace:*"
+  }
+}

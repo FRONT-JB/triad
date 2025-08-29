@@ -1,0 +1,14 @@
+{
+  "extends": "@triad/typescript-config/base",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@triad/shared": ["../../packages/shared"],
+      "@triad/ui": ["../../packages/ui"]
+    }
+  },
+  "types": ["chrome", "node"],
+  "include": ["src", "types.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["dist", "node_modules"]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "@triad/extension",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "vite build && cp manifest.json ../../dist/",
+    "build:all": "yarn workspace @triad/popup build && yarn workspace @triad/side-panel build && yarn workspace @triad/content-ui build && vite build",
+    "dev": "yarn build:all && vite build --watch",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint src --ext .ts,.tsx",
+    "clean": "rm -rf ../../dist"
+  },
+  "devDependencies": {
+    "@triad/typescript-config": "workspace:*"
+  }
+}

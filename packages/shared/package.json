@@ -1,0 +1,20 @@
+{
+  "name": "@triad/shared",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "sideEffects": false,
+  "files": [
+    "dist/**"
+  ],
+  "types": "index.mts",
+  "main": "dist/index.mjs",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@triad/typescript-config": "workspace:*"
+  }
+}

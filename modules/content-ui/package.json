@@ -1,0 +1,21 @@
+{
+  "name": "@triad/content-ui",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "sideEffects": true,
+  "scripts": {
+    "build": "tsx build.mts",
+    "dev": "tsx build.mts --dev",
+    "clean": "rm -rf dist",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@triad/shared": "workspace:*",
+    "@triad/ui": "workspace:*"
+  },
+  "devDependencies": {
+    "@triad/tailwindcss-config": "workspace:*",
+    "@triad/typescript-config": "workspace:*"
+  }
+}
