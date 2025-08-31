@@ -36,3 +36,7 @@ Triad는 원격 협업을 향상시키기 위해 다음과 같은 기능을 제�
 - 답글 기능을 포함한 스레드 형태 대화
 - 댓글 상태 관리 (활성/해결됨/보관됨)
 - 댓글 데이터 영구 저장
+
+## 레퍼런스
+
+- [Chrome Extension Boilerplate](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite)
