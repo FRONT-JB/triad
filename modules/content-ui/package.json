@@ -6,13 +6,14 @@
   "sideEffects": true,
   "scripts": {
     "build": "tsx build.mts",
-    "dev": "tsx build.mts --dev",
+    "dev": "tsx build.mts",
     "clean": "rm -rf dist",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@triad/shared": "workspace:*",
-    "@triad/ui": "workspace:*"
+    "@triad/ui": "workspace:*",
+    "@triad/storage": "workspace:*"
   },
   "devDependencies": {
     "@triad/tailwindcss-config": "workspace:*",

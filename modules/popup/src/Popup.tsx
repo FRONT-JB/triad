@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { CHROME_ACTION_TYPE } from "@triad/shared";
+import { useFloating } from "@triad/shared";
 import { Button } from "@triad/ui";
 
 const Popup: React.FC = () => {
-  const [isTriadActive, setIsTriadActive] = useState(false);
   const [currentUrl, setCurrentUrl] = useState("");
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const { showsFloating, toggleFloating } = useFloating();
 
   useEffect(() => {
     // 현재 탭 정보 가져오기
@@ -15,42 +15,11 @@ const Popup: React.FC = () => {
       }
     });
 
-    // Triad 상태 확인
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      if (tabs[0]?.id) {
-        chrome.tabs.sendMessage(
-          tabs[0].id,
-          { action: CHROME_ACTION_TYPE.GET_STATUS },
-          (response) => {
-            if (response?.active) {
-              setIsTriadActive(response.active);
-            }
-          }
-        );
-      }
-    });
-
     // 다크모드 설정 불러오기
     chrome.storage.local.get(["theme"], (result) => {
       setIsDarkMode(result.theme === "dark");
     });
   }, []);
-
-  const handleToggleTriad = () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      if (tabs[0]?.id) {
-        chrome.tabs.sendMessage(
-          tabs[0].id,
-          { action: CHROME_ACTION_TYPE.TOGGLE_TRIAD },
-          (response) => {
-            if (response) {
-              setIsTriadActive(response.active);
-            }
-          }
-        );
-      }
-    });
-  };
 
   const handleOpenSidePanel = () => {
     chrome.runtime.sendMessage({ action: "open-side-panel" });
@@ -91,17 +60,17 @@ const Popup: React.FC = () => {
       <div className="mb-4">
         <div
           className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium ${
-            isTriadActive
+            showsFloating
               ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
               : "bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-400"
           }`}
         >
           <div
             className={`w-2 h-2 rounded-full ${
-              isTriadActive ? "bg-green-500" : "bg-gray-400"
+              showsFloating ? "bg-green-500" : "bg-gray-400"
             }`}
           ></div>
-          {isTriadActive ? "Active" : "Inactive"}
+          {showsFloating ? "Active" : "Inactive"}
         </div>
       </div>
 
@@ -120,14 +89,14 @@ const Popup: React.FC = () => {
         ) : (
           <div className="space-y-3">
             <button
-              onClick={handleToggleTriad}
+              onClick={toggleFloating}
               className={`w-full py-2 px-4 rounded-lg font-medium transition-colors ${
-                isTriadActive
+                showsFloating
                   ? "bg-red-500 hover:bg-red-600 text-white"
                   : "bg-blue-500 hover:bg-blue-600 text-white"
               }`}
             >
-              {isTriadActive ? "Triad 비활성화" : "Triad 활성화"}
+              {showsFloating ? "Triad 비활성화" : "Triad 활성화"}
             </button>
 
             <button

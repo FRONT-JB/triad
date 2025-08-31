@@ -1,6 +1,11 @@
+import { useFloating } from "@triad/shared";
 import React from "react";
 
 const App: React.FC = () => {
+  const { showsFloating } = useFloating();
+
+  if (!showsFloating) return null;
+
   return (
     <div className="fixed left-0 right-0 bottom-6 z-extension bg-gray-800 text-white p-4 rounded-lg shadow-lg">
       <h1 className="text-lg font-bold mb-2">Triad Content UI</h1>
