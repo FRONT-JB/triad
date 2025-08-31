@@ -134,10 +134,11 @@ importers:
         version: link:../../packages/typescript-config
 
   packages/shared:
-    devDependencies:
+    dependencies:
       '@triad/storage':
         specifier: workspace:*
         version: link:../storage
+    devDependencies:
       '@triad/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
