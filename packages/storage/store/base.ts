@@ -6,31 +6,31 @@ import type {
 } from "../types/index.js";
 
 /**
- * Chrome reference error while running `processTailwindFeatures` in tailwindcss.
- *  To avoid this, we need to check if globalThis.chrome is available and add fallback logic.
+ * tailwindcss의 `processTailwindFeatures` 실행 시 Chrome 참조 에러 발생.
+ * 이를 방지하기 위해 globalThis.chrome이 사용 가능한지 확인하고 폴백 로직을 추가.
  */
 const chrome = globalThis.chrome;
 
 /**
- * Sets or updates an arbitrary cache with a new value or the result of an update function.
+ * 임의의 캠시를 새 값 또는 업데이트 함수의 결과로 설정하거나 업데이트.
  */
 const updateCache = async <D>(
   valueOrUpdate: ValueOrUpdateType<D>,
   cache: D | null
 ): Promise<D> => {
-  // Type guard to check if our value or update is a function
+  // 값 또는 업데이트가 함수인지 확인하는 타입 가드
   const isFunction = <D>(
     value: ValueOrUpdateType<D>
   ): value is (prev: D) => D | Promise<D> => typeof value === "function";
 
-  // Type guard to check in case of a function if it's a Promise
+  // 함수인 경우 Promise인지 확인하는 타입 가드
   const returnsPromise = <D>(
     func: (prev: D) => D | Promise<D>
   ): func is (prev: D) => Promise<D> =>
-    // Use ReturnType to infer the return type of the function and check if it's a Promise
+    // ReturnType을 사용하여 함수의 반환 타입을 추론하고 Promise인지 확인
     (func as (prev: D) => Promise<D>) instanceof Promise;
   if (isFunction(valueOrUpdate)) {
-    // Check if the function returns a Promise
+    // 함수가 Promise를 반환하는지 확인
     if (returnsPromise(valueOrUpdate)) {
       return valueOrUpdate(cache as D);
     } else {
@@ -42,13 +42,13 @@ const updateCache = async <D>(
 };
 
 /**
- * If one session storage needs access from content scripts, we need to enable it globally.
+ * 하나의 세션 스토리지가 콘텐츠 스크립트에서 접근해야 하는 경우, 전역적으로 활성화 필요.
  * @default false
  */
 let globalSessionAccessLevelFlag: StorageConfigType["sessionAccessForContentScripts"] = false;
 
 /**
- * Checks if the storage permission is granted in the manifest.json.
+ * manifest.json에서 스토리지 권한이 부여되었는지 확인.
  */
 const checkStoragePermission = (storageEnum: StorageEnum): void => {
   if (!chrome) {
@@ -63,7 +63,7 @@ const checkStoragePermission = (storageEnum: StorageEnum): void => {
 };
 
 /**
- * Creates a storage area for persisting and exchanging data.
+ * 데이터 지속 및 교환을 위한 스토리지 영역 생성.
  */
 export const createStorage = <D = string>(
   key: string,
@@ -80,7 +80,7 @@ export const createStorage = <D = string>(
   const serialize = config?.serialization?.serialize ?? ((v: D) => v);
   const deserialize = config?.serialization?.deserialize ?? ((v) => v as D);
 
-  // Set global session storage access level for StoryType.Session, only when not already done but needed.
+  // StorageEnum.Session에 대한 전역 세션 스토리지 접근 레벨 설정, 아직 수행되지 않았지만 필요한 경우에만.
   if (
     globalSessionAccessLevelFlag === false &&
     storageEnum === StorageEnum.Session &&
@@ -95,13 +95,13 @@ export const createStorage = <D = string>(
       .catch((error) => {
         console.error(error);
         console.error(
-          "Please call .setAccessLevel() into different context, like a background script."
+          "백그라운드 스크립트와 같은 다른 컨텍스트에서 .setAccessLevel()을 호출하세요."
         );
       });
     globalSessionAccessLevelFlag = true;
   }
 
-  // Register life cycle methods
+  // 라이프사이클 메서드 등록
   const get = async (): Promise<D> => {
     checkStoragePermission(storageEnum);
     const value = await chrome?.storage[storageEnum].get([key]);
@@ -137,11 +137,11 @@ export const createStorage = <D = string>(
     listeners.forEach((listener) => listener());
   };
 
-  // Listener for live updates from the browser
+  // 브라우저로부터의 실시간 업데이트를 위한 리스너
   const _updateFromStorageOnChanged = async (changes: {
     [key: string]: chrome.storage.StorageChange;
   }) => {
-    // Check if the key we are listening for is in the changes object
+    // 수신중인 키가 변경 객체에 있는지 확인
     if (changes[key] === undefined) return;
 
     const valueOrUpdate: ValueOrUpdateType<D> = deserialize(
@@ -161,7 +161,7 @@ export const createStorage = <D = string>(
     _emitChange();
   });
 
-  // Register listener for live updates for our storage area
+  // 스토리지 영역의 실시간 업데이트를 위한 리스너 등록
   if (liveUpdate) {
     chrome?.storage[storageEnum].onChanged.addListener(
       _updateFromStorageOnChanged
