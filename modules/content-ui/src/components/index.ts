@@ -1,2 +1,3 @@
 export * from "./floating-dock";
-export * from "./cursor-manager";
+export * from "./cursor";
+export * from "./comments";

@@ -1,5 +1,6 @@
 import { cn } from "../lib/utils.js";
 import { Children, type HTMLAttributes, type SVGProps } from "react";
+import { Icon } from "./icon.js";
 
 export type CursorProps = HTMLAttributes<HTMLSpanElement> & {
   userColor: string;
@@ -39,6 +40,18 @@ export const CursorPointer = ({ className, ...props }: CursorPointerProps) => (
       fill="currentColor"
     />
   </svg>
+);
+export type CursorCommentProps = HTMLAttributes<HTMLSpanElement>;
+export const CursorComment = ({ className, ...props }: CursorCommentProps) => (
+  <span
+    className={cn(
+      "tw-rounded-full tw-rounded-tl-[0] tw-ring-1 tw-ring-white tw-bg-blue-500 tw-w-5 tw-h-5 tw-flex tw-items-center tw-justify-center",
+      className
+    )}
+    {...props}
+  >
+    <Icon name="Plus" size="sm" className="tw-text-white" />
+  </span>
 );
 export type CursorBodyProps = HTMLAttributes<HTMLSpanElement>;
 export const CursorBody = ({
