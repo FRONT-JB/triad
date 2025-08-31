@@ -1,5 +1,5 @@
 {
-  "name": "@triad/shared",
+  "name": "@triad/storage",
   "version": "0.0.1",
   "type": "module",
   "private": true,
@@ -13,9 +13,6 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "type-check": "tsc --noEmit"
-  },
-  "dependencies": {
-    "@triad/storage": "workspace:*"
   },
   "devDependencies": {
     "@triad/typescript-config": "workspace:*"

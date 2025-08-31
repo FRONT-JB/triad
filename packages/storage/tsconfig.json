@@ -1,0 +1,8 @@
+{
+  "extends": "@triad/typescript-config/module",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "dist"
+  },
+  "include": ["index.mts"]
+}

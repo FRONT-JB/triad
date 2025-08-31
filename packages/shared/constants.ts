@@ -1,7 +1,6 @@
 export const EXTENSION_NAME = "Triad";
 
 export const CHROME_ACTION_TYPE = {
-  TOGGLE_TRIAD: "toggle-triad",
   GET_STATUS: "get-status",
   OPEN_SIDE_PANEL: "open-side-panel",
 } as const;
