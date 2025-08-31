@@ -63,7 +63,8 @@ export default {
       full: "9999px",
     },
     zIndex: {
-      "floating-dock": "2147483647",
+      "floating-dock": "10000",
+      cursor: "10100",
     },
   },
   plugins: [forms],

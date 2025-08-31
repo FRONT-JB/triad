@@ -1,8 +1,13 @@
 import React from "react";
-import { FloatingDock } from "./components";
+import { FloatingDock, CursorManager } from "./components";
 
 const App: React.FC = () => {
-  return <FloatingDock />;
+  return (
+    <>
+      <CursorManager />
+      <FloatingDock />
+    </>
+  );
 };
 
 export default App;

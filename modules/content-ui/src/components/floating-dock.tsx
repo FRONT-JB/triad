@@ -66,7 +66,7 @@ export function FloatingDock({ className }: FloatingDockProps) {
         <Button
           variant="ghost"
           size="icon"
-          className="tw-h-8 tw-w-8 tw-rounded-full tw-transition-colors tw-text-gray-300 hover:tw-text-gray-900 hover:tw-bg-gray-100"
+          className="tw-h-8 tw-w-8 tw-rounded-full tw-transition-colors tw-text-gray-300 hover:tw-text-gray-900 hover:tw-bg-gray-100 tw-cursor-none"
           title="댓글 입력"
         >
           <Icon name="MessageCircle" size="sm" />
@@ -75,7 +75,7 @@ export function FloatingDock({ className }: FloatingDockProps) {
         <Button
           variant="ghost"
           size="icon"
-          className="tw-h-8 tw-w-8 tw-rounded-full tw-transition-colors tw-text-gray-300 hover:tw-text-gray-900 hover:tw-bg-gray-100"
+          className="tw-h-8 tw-w-8 tw-rounded-full tw-transition-colors tw-text-gray-300 hover:tw-text-gray-900 hover:tw-bg-gray-100 tw-cursor-none"
           title="모든 댓글 보기"
           onClick={handleOpenSidePanel}
         >
@@ -85,7 +85,7 @@ export function FloatingDock({ className }: FloatingDockProps) {
         <Button
           variant="ghost"
           size="icon"
-          className="tw-h-8 tw-w-8 tw-rounded-full tw-transition-colors tw-text-gray-300 hover:tw-text-gray-900 hover:tw-bg-gray-100"
+          className="tw-h-8 tw-w-8 tw-rounded-full tw-transition-colors tw-text-gray-300 hover:tw-text-gray-900 hover:tw-bg-gray-100 tw-cursor-none"
           title="댓글 새로고침"
         >
           <Icon name="RotateCcw" size="sm" />
@@ -122,7 +122,7 @@ export function FloatingDock({ className }: FloatingDockProps) {
       <Button
         variant="ghost"
         size="icon"
-        className="tw-h-8 tw-w-8 tw-rounded-full tw-transition-colors tw-text-gray-300 hover:tw-text-gray-900 hover:tw-bg-gray-100"
+        className="tw-h-8 tw-w-8 tw-rounded-full tw-transition-colors tw-text-gray-300 hover:tw-text-gray-900 hover:tw-bg-gray-100 tw-cursor-none"
         onClick={toggleFloating}
         title="Dock 접기"
       >
