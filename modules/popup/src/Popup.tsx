@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useFloating } from "@triad/shared";
+import { CHROME_ACTION_TYPE, useFloating } from "@triad/shared";
 import { Button } from "@triad/ui";
 
 const Popup: React.FC = () => {
@@ -22,7 +22,9 @@ const Popup: React.FC = () => {
   }, []);
 
   const handleOpenSidePanel = () => {
-    chrome.runtime.sendMessage({ action: "open-side-panel" });
+    chrome.runtime.sendMessage({
+      action: CHROME_ACTION_TYPE.OPEN_SIDE_PANEL,
+    });
   };
 
   const handleToggleTheme = () => {
@@ -38,17 +40,19 @@ const Popup: React.FC = () => {
 
   return (
     <div
-      className={`w-80 p-4 ${
-        isDarkMode ? "bg-gray-800 text-white" : "bg-white text-gray-900"
+      className={`tw-w-80 tw-p-4 ${
+        isDarkMode
+          ? "tw-bg-gray-800 tw-text-white"
+          : "tw-bg-white tw-text-gray-900"
       }`}
     >
       {/* 헤더 */}
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-sm">T</span>
+      <div className="tw-flex tw-items-center tw-justify-between tw-mb-6">
+        <div className="tw-flex tw-items-center tw-gap-2">
+          <div className="tw-w-8 tw-h-8 tw-bg-gradient-to-br tw-from-blue-500 tw-to-purple-600 tw-rounded-lg tw-flex tw-items-center tw-justify-center">
+            <span className="tw-text-white tw-font-bold tw-text-lg">T</span>
           </div>
-          <h1 className="text-lg font-semibold">Triad</h1>
+          <h1 className="tw-text-lg tw-font-semibold">Triad</h1>
         </div>
 
         <Button variant="default" onClick={handleToggleTheme} title="테마 전환">
@@ -57,17 +61,17 @@ const Popup: React.FC = () => {
       </div>
 
       {/* 상태 표시 */}
-      <div className="mb-4">
+      <div className="tw-mb-4">
         <div
-          className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium ${
+          className={`tw-inline-flex tw-items-center tw-gap-2 tw-px-3 tw-py-2 tw-rounded-full tw-text-[14px] tw-font-medium ${
             showsFloating
-              ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
-              : "bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-400"
+              ? "tw-bg-green-100 tw-text-green-800 dark:tw-bg-green-900 dark:tw-text-green-200"
+              : "tw-bg-gray-100 tw-text-gray-600 dark:tw-bg-gray-700 dark:tw-text-gray-400"
           }`}
         >
           <div
-            className={`w-2 h-2 rounded-full ${
-              showsFloating ? "bg-green-500" : "bg-gray-400"
+            className={`tw-w-2 tw-h-2 tw-rounded-full ${
+              showsFloating ? "tw-bg-green-500" : "tw-bg-gray-400"
             }`}
           ></div>
           {showsFloating ? "Active" : "Inactive"}
@@ -75,25 +79,25 @@ const Popup: React.FC = () => {
       </div>
 
       {/* 메인 콘텐츠 */}
-      <div className="space-y-4">
-        <div className="text-sm text-gray-600 dark:text-gray-400">
+      <div className="tw-space-y-3">
+        <div className="tw-text-sm tw-text-gray-600 dark:tw-text-gray-400">
           웹페이지에서 팀원들과 실시간으로 협업하세요
         </div>
 
         {isUnsupportedUrl ? (
-          <div className="p-3 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
-            <div className="text-sm text-yellow-800 dark:text-yellow-200">
+          <div className="tw-p-2 tw-bg-yellow-50 dark:tw-bg-yellow-900/20 tw-border tw-border-yellow-200 dark:tw-border-yellow-800 tw-rounded-lg">
+            <div className="tw-text-sm tw-text-yellow-800 dark:tw-text-yellow-200">
               ⚠️ 이 페이지에서는 Triad를 사용할 수 없습니다.
             </div>
           </div>
         ) : (
-          <div className="space-y-3">
+          <div className="tw-space-y-2">
             <button
               onClick={toggleFloating}
-              className={`w-full py-2 px-4 rounded-lg font-medium transition-colors ${
+              className={`tw-w-full tw-py-2 tw-px-4 tw-rounded-lg tw-font-medium tw-transition-colors ${
                 showsFloating
-                  ? "bg-red-500 hover:bg-red-600 text-white"
-                  : "bg-blue-500 hover:bg-blue-600 text-white"
+                  ? "tw-bg-red-500 hover:tw-bg-red-600 tw-text-white"
+                  : "tw-bg-blue-500 hover:tw-bg-blue-600 tw-text-white"
               }`}
             >
               {showsFloating ? "Triad 비활성화" : "Triad 활성화"}
@@ -101,7 +105,7 @@ const Popup: React.FC = () => {
 
             <button
               onClick={handleOpenSidePanel}
-              className="w-full py-2 px-4 rounded-lg font-medium border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+              className="tw-w-full tw-py-2 tw-px-4 tw-rounded-lg tw-font-medium tw-border tw-border-gray-300 dark:tw-border-gray-600 hover:tw-bg-gray-50 dark:hover:tw-bg-gray-700 tw-transition-colors"
             >
               사이드 패널 열기
             </button>
@@ -109,8 +113,8 @@ const Popup: React.FC = () => {
         )}
 
         {/* 도움말 */}
-        <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
-          <div className="text-xs text-gray-500 dark:text-gray-400 space-y-1">
+        <div className="tw-pt-2 tw-border-t tw-border-gray-200 dark:tw-border-gray-700">
+          <div className="tw-text-xs tw-text-gray-500 dark:tw-text-gray-400 tw-space-y-[2px]">
             <div>💬 더블클릭으로 댓글 추가</div>
             <div>👆 커서 움직임 공유</div>
             <div>📋 사이드 패널에서 세부 설정</div>

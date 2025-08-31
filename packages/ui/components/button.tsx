@@ -3,22 +3,25 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
+  "tw-inline-flex tw-items-center tw-justify-center tw-gap-2 tw-whitespace-nowrap tw-rounded-md tw-text-[14px] tw-font-medium tw-transition-colors focus-visible:tw-outline-none disabled:tw-pointer-events-none disabled:tw-opacity-50",
   {
     variants: {
       variant: {
-        default: "bg-gray-900 text-white shadow hover:bg-gray-800",
-        destructive: "bg-red-500 text-white shadow-sm hover:bg-red-600",
-        outline: "border border-gray-300 bg-white shadow-sm hover:bg-gray-50",
-        secondary: "bg-gray-100 text-gray-900 shadow-sm hover:bg-gray-200",
-        ghost: "hover:bg-gray-100 hover:text-gray-900",
-        link: "text-blue-500 underline-offset-4 hover:underline",
+        default: "tw-bg-gray-900 tw-text-white tw-shadow hover:tw-bg-gray-800",
+        destructive:
+          "tw-bg-red-500 tw-text-white tw-shadow-sm hover:tw-bg-red-600",
+        outline:
+          "tw-border tw-border-gray-300 tw-bg-white tw-shadow-sm hover:tw-bg-gray-50",
+        secondary:
+          "tw-bg-gray-100 tw-text-gray-900 tw-shadow-sm hover:tw-bg-gray-200",
+        ghost: "hover:tw-bg-gray-100 hover:tw-text-gray-900",
+        link: "tw-text-blue-500 tw-underline-offset-4 hover:tw-underline",
       },
       size: {
-        default: "h-9 px-4 py-2",
-        sm: "h-8 px-3 text-xs",
-        lg: "h-10 px-8",
-        icon: "h-9 w-9",
+        default: "tw-h-9 tw-px-4 tw-py-2",
+        sm: "tw-h-7 tw-px-2 tw-text-xs",
+        lg: "tw-h-10 tw-px-8",
+        icon: "tw-h-9 tw-w-9",
       },
     },
     defaultVariants: {

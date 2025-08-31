@@ -33,8 +33,8 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   }
 });
 
-chrome.runtime.onMessage.addListener((message) => {
-  if (message.action === "open-side-panel") {
+chrome.runtime.onMessage.addListener((payload) => {
+  if (payload.action === "open-side-panel") {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       if (tabs[0]?.windowId) {
         chrome.sidePanel.open({ windowId: tabs[0].windowId });
