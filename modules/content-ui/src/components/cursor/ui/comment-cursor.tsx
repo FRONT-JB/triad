@@ -1,7 +1,13 @@
-import { Cursor, CursorBody, CursorComment, CursorName } from "@triad/ui";
+import {
+  Cursor,
+  CursorBody,
+  CursorComment,
+  CursorMessage,
+  CursorName,
+} from "@triad/ui";
 
 export default function CommentCursor({
-  userName = "You",
+  userName = "@You",
   userColor = "#3b82f6",
 }: {
   userName?: string;
@@ -12,6 +18,10 @@ export default function CommentCursor({
       <CursorComment />
       <CursorBody>
         <CursorName>{userName}</CursorName>
+
+        <CursorMessage className="tw-mt-1">
+          코멘트 기능이 활성화됐어요.
+        </CursorMessage>
       </CursorBody>
     </Cursor>
   );

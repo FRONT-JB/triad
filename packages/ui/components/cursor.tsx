@@ -61,7 +61,7 @@ export const CursorBody = ({
 }: CursorBodyProps) => (
   <span
     className={cn(
-      "tw-relative tw-ml-3.5 tw-flex tw-flex-col tw-whitespace-nowrap tw-rounded-xl tw-py-1 tw-pr-3 tw-pl-2.5 tw-text-xs",
+      "tw-relative tw-ml-3.5 tw-flex tw-flex-col tw-whitespace-nowrap tw-rounded-xl tw-rounded-tl-[4px] tw-py-1 tw-pr-3 tw-pl-2.5 tw-text-xs",
       Children.count(children) > 1 &&
         "tw-rounded-tl [&>:first-child]:tw-opacity-70",
       "tw-bg-[var(--user-color)] tw-text-white",

@@ -1,5 +1,5 @@
 import { useMode } from "@triad/shared";
-import { useCursor } from "../useCursor";
+import { useCursor } from "../hooks";
 import { lazy, Suspense } from "react";
 
 const DefaultCursor = lazy(() => import("./default-cursor"));
@@ -11,7 +11,7 @@ interface CustomCursorProps {
 }
 
 export function CustomCursor({
-  userName = "You",
+  userName = "@You",
   userColor = "#3b82f6",
 }: CustomCursorProps) {
   const { cursorRef, posX, posY, isVisible } = useCursor();

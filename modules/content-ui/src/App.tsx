@@ -1,11 +1,14 @@
 import React from "react";
-import { FloatingDock, CursorManager } from "./components";
+import { FloatingDock, CursorManager, CommentSystem } from "./components";
 
 const App: React.FC = () => {
   return (
     <>
       <CursorManager />
+
       <FloatingDock />
+
+      <CommentSystem />
     </>
   );
 };

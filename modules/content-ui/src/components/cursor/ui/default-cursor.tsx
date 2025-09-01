@@ -1,7 +1,7 @@
 import { Cursor, CursorBody, CursorName, CursorPointer } from "@triad/ui";
 
 export default function DefaultCursor({
-  userName = "You",
+  userName = "@You",
   userColor = "#3b82f6",
 }: {
   userName?: string;

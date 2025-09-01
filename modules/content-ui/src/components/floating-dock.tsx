@@ -18,6 +18,7 @@ function FloatingTrigger() {
 
   return (
     <div
+      data-triad-ui="floating-dock-trigger"
       className={cn(
         "tw-fixed tw-bottom-6 tw-right-3 tw-transform -tw-translate-x-1/2 tw-z-floating-dock",
         "tw-bg-[#060606]/85 tw-backdrop-blur-md",
@@ -53,6 +54,7 @@ export function FloatingDock({ className }: FloatingDockProps) {
 
   return (
     <div
+      data-triad-ui="floating-dock"
       className={cn(
         "tw-fixed tw-bottom-6 tw-left-1/2 tw-transform -tw-translate-x-1/2 tw-z-floating-dock",
         "tw-bg-[#060606]/85 tw-backdrop-blur-md",

@@ -14,7 +14,11 @@ function Ping() {
 export function AddCommentButton() {
   const { mode, setMode, isCommentMode } = useMode();
 
-  const handleToggleMode = () => {
+  const handleToggleMode = (event: React.MouseEvent) => {
+    // 이벤트 전파 방지 (comment click 이벤트가 실행되지 않도록)
+    event.stopPropagation();
+    event.preventDefault();
+
     const updatedMode: ModeState["mode"] =
       mode === "cursor" ? "comment" : "cursor";
 
