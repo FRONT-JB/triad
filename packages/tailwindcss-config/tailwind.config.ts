@@ -64,6 +64,9 @@ export default {
     },
     zIndex: {
       "floating-dock": "10000",
+      "comment-input": "10000",
+      "comment-marker": "10000",
+      "comment-tooltip": "10100",
       cursor: "10100",
     },
   },

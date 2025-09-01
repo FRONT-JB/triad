@@ -1,21 +1,14 @@
-import { useEffect, useState, useRef, useCallback } from "react";
-import { Cursor, CursorPointer, CursorBody, CursorName } from "@triad/ui";
+import { useCallback, useEffect, useRef, useState } from "react";
 
-interface CustomCursorProps {
-  userName?: string;
-  userColor?: string;
-}
-
-export function CustomCursor({
-  userName = "You",
-  userColor = "#3b82f6",
-}: CustomCursorProps) {
+export function useCursor() {
   const [{ x: posX, y: posY }, setPosition] = useState<{
     x: number;
     y: number;
   }>({
-    x: 0,
-    y: 0,
+    // 페이지가 로드되기 전에 커서를 화면 밖으로 이동
+    // 기본값으로 0을 사용하면 페이지가 로드됐을때 왼쪽 상단에 위치함
+    x: -9999,
+    y: -9999,
   });
 
   const [isVisible, setIsVisible] = useState(true);
@@ -48,13 +41,13 @@ export function CustomCursor({
     const style = document.createElement("style");
     style.id = styleId;
     style.textContent = `
-      *, *::before, *::after {
-        cursor: none !important;
-      }
-      body {
-        cursor: none !important;
-      }
-    `;
+          *, *::before, *::after {
+            cursor: none !important;
+          }
+          body {
+            cursor: none !important;
+          }
+        `;
     document.head.appendChild(style);
 
     return () => {
@@ -82,25 +75,10 @@ export function CustomCursor({
     };
   }, [handleMouseMove, handleMouseEnter, handleMouseLeave]);
 
-  if (!isVisible) return null;
-
-  return (
-    <div
-      ref={cursorRef}
-      className="tw-fixed tw-pointer-events-none tw-z-cursor tw-transition-none"
-      style={{
-        left: posX,
-        top: posY,
-        transform: "translate(-2px, -2px)",
-        willChange: "transform",
-      }}
-    >
-      <Cursor userColor={userColor}>
-        <CursorPointer />
-        <CursorBody>
-          <CursorName>{userName}</CursorName>
-        </CursorBody>
-      </Cursor>
-    </div>
-  );
+  return {
+    cursorRef,
+    posX,
+    posY,
+    isVisible,
+  };
 }

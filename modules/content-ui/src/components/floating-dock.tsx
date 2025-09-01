@@ -7,6 +7,7 @@ import {
   cn,
   Icon,
 } from "@triad/ui";
+import { AddCommentButton } from "./comments";
 
 interface FloatingDockProps {
   className?: string;
@@ -17,6 +18,7 @@ function FloatingTrigger() {
 
   return (
     <div
+      data-triad-ui="floating-dock-trigger"
       className={cn(
         "tw-fixed tw-bottom-6 tw-right-3 tw-transform -tw-translate-x-1/2 tw-z-floating-dock",
         "tw-bg-[#060606]/85 tw-backdrop-blur-md",
@@ -52,6 +54,7 @@ export function FloatingDock({ className }: FloatingDockProps) {
 
   return (
     <div
+      data-triad-ui="floating-dock"
       className={cn(
         "tw-fixed tw-bottom-6 tw-left-1/2 tw-transform -tw-translate-x-1/2 tw-z-floating-dock",
         "tw-bg-[#060606]/85 tw-backdrop-blur-md",
@@ -63,14 +66,7 @@ export function FloatingDock({ className }: FloatingDockProps) {
       )}
     >
       <div className="tw-flex tw-items-center tw-gap-1">
-        <Button
-          variant="ghost"
-          size="icon"
-          className="tw-h-8 tw-w-8 tw-rounded-full tw-transition-colors tw-text-gray-300 hover:tw-text-gray-900 hover:tw-bg-gray-100 tw-cursor-none"
-          title="댓글 입력"
-        >
-          <Icon name="MessageCircle" size="sm" />
-        </Button>
+        <AddCommentButton />
 
         <Button
           variant="ghost"

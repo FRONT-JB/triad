@@ -8,6 +8,7 @@ import {
   Loader,
   MonitorCog,
   MonitorOff,
+  Plus,
   type LucideProps,
 } from "lucide-react";
 import { cn } from "../lib/utils.js";
@@ -37,6 +38,7 @@ const ICON_MAP = {
   Loader,
   MonitorCog,
   MonitorOff,
+  Plus,
 } as const;
 
 type IconName = keyof typeof ICON_MAP;

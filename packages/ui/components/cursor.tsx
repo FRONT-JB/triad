@@ -1,5 +1,6 @@
 import { cn } from "../lib/utils.js";
 import { Children, type HTMLAttributes, type SVGProps } from "react";
+import { Icon } from "./icon.js";
 
 export type CursorProps = HTMLAttributes<HTMLSpanElement> & {
   userColor: string;
@@ -40,6 +41,18 @@ export const CursorPointer = ({ className, ...props }: CursorPointerProps) => (
     />
   </svg>
 );
+export type CursorCommentProps = HTMLAttributes<HTMLSpanElement>;
+export const CursorComment = ({ className, ...props }: CursorCommentProps) => (
+  <span
+    className={cn(
+      "tw-rounded-full tw-rounded-tl-[0] tw-ring-1 tw-ring-white tw-bg-blue-500 tw-w-5 tw-h-5 tw-flex tw-items-center tw-justify-center",
+      className
+    )}
+    {...props}
+  >
+    <Icon name="Plus" size="sm" className="tw-text-white" />
+  </span>
+);
 export type CursorBodyProps = HTMLAttributes<HTMLSpanElement>;
 export const CursorBody = ({
   children,
@@ -48,7 +61,7 @@ export const CursorBody = ({
 }: CursorBodyProps) => (
   <span
     className={cn(
-      "tw-relative tw-ml-3.5 tw-flex tw-flex-col tw-whitespace-nowrap tw-rounded-xl tw-py-1 tw-pr-3 tw-pl-2.5 tw-text-xs",
+      "tw-relative tw-ml-3.5 tw-flex tw-flex-col tw-whitespace-nowrap tw-rounded-xl tw-rounded-tl-[4px] tw-py-1 tw-pr-3 tw-pl-2.5 tw-text-xs",
       Children.count(children) > 1 &&
         "tw-rounded-tl [&>:first-child]:tw-opacity-70",
       "tw-bg-[var(--user-color)] tw-text-white",

@@ -1,0 +1,9 @@
+const Z_INDEX = {
+  FLOATING_DOCK: "10000",
+  COMMENT_INPUT: "10000",
+  COMMENT_MARKER: "10000",
+  COMMENT_TOOLTIP: "10100",
+  CURSOR: "10100",
+} as const;
+
+export { Z_INDEX };
